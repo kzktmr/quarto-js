@@ -5,6 +5,7 @@
 ## 必要環境
 
 - Quarto 1.7 以上（Typst 組み込み済みのため Typst の別途インストール不要）
+- R を使う場合は `svglite` パッケージが必要（`install.packages("svglite")`）
 
 ## インストール
 
