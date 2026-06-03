@@ -1,0 +1,14 @@
+# Quarto generated files
+*.pdf
+*.typ
+!_extensions/**/*.typ
+*_files/
+.quarto/
+
+# R
+.Rhistory
+.Rproj.user/
+*.Rproj
+
+# macOS
+.DS_Store
