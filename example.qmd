@@ -3,7 +3,7 @@ title: Typst日本語用テンプレートjs
 author:
   - 奥村 晴彦, 三重大, hoge@sample.com
   - 何野 何某, 某大
-date: 2025-12-31
+date: 2025-01-01
 abstract: |
   p{{< latex >}} のjsarticle/jsbookに似た出力をするTypstテンプレートです。自由に修正してお使いください。
 cols: 2
@@ -24,11 +24,13 @@ knitr:
 
 # これは何？
 
-```{r}
-plot(0)
-```
+Typst日本語用テンプレートです。(u)p{{< latex >}} のjsarticle/jsbook相当品のつもりです。このファイル `example.qmd` の頭の部分（特に使用フォント）を必要に応じて書き直してお試しください。
 
-Typst日本語用テンプレートです。(u)p{{< latex >}} のjsarticle/jsbook相当品のつもりです。このファイル `example.typ` の頭の部分（特に使用フォント）を必要に応じて書き直してお試しください。
+RのコードチャンクはそのままPDFに図として埋め込まれます。
+
+```{r}
+curve(sin, -2*pi, 2*pi, ylab = "y")
+```
 
 冒頭の「目次」は `{{{< outline >}}}` で出しています。邪魔ならこの1行を消してください。
 
@@ -63,40 +65,33 @@ Typst日本語用テンプレートです。(u)p{{< latex >}} のjsarticle/jsboo
 
 # 数式
 
-慣れないうちは{{< latex >}} で書いて
+`qmd`ファイルに{{< latex >}} 記法を直接書くことができます。
 
 ```
-pandoc in.tex -o out.typ
+$$
+\begin{align}
+\left(\int_{0}^{\infty}\frac{\sin x}{\sqrt{x}}dx\right)^2
+&=\sum_{k=0}^{\infty}\frac{(2k)!}{2^{2k}(k!)^2}\frac{1}{2k+1}\\
+&=\prod_{k=1}^{\infty}\frac{4k^2}{4k^2-1}=\frac{\pi}{2}
+\end{align}
+$$
 ```
-::: {.noindent}
-でTypstに翻訳すると楽です。
-:::
+
+$$
+\begin{align}
+\left(\int_{0}^{\infty}\frac{\sin x}{\sqrt{x}}dx\right)^2
+&=\sum_{k=0}^{\infty}\frac{(2k)!}{2^{2k}(k!)^2}\frac{1}{2k+1}\\
+&=\prod_{k=1}^{\infty}\frac{4k^2}{4k^2-1}=\frac{\pi}{2}
+\end{align}
+$$
+
+Typst記法で書くこともできます（` ```{=typst} ` ブロックを使用）。
 
 ```{=typst}
 $ (integral_0^oo (sin x) / sqrt(x) d x)^2
   &= sum_(k = 0)^oo ((2 k)!) / (2^(2 k) (k!)^2) 1 / (2 k + 1) \
   &= product_(k = 1)^oo (4 k^2) / (4 k^2 - 1) = pi / 2 $
 ```
-
-`qmd`ファイルに{{< latex >}} を直接書くことができます。
-
-```
-$$
-\begin{align}
-\left(\int_{0}^{\infty}\frac{\sin x}{\sqrt{x}}dx\right)^2
-&=\sum_{k=0}^{\infty}\frac{(2k)!}{2^{2k}(k!)^2}\frac{1}{2k+1}\\
-&=\prod_{k=1}^{\infty}\frac{4k^2}{4k^2-1}=\frac{\pi}{2}
-\end{align}
-$$
-```
-
-$$
-\begin{align}
-\left(\int_{0}^{\infty}\frac{\sin x}{\sqrt{x}}dx\right)^2
-&=\sum_{k=0}^{\infty}\frac{(2k)!}{2^{2k}(k!)^2}\frac{1}{2k+1}\\
-&=\prod_{k=1}^{\infty}\frac{4k^2}{4k^2-1}=\frac{\pi}{2}
-\end{align}
-$$
 
 # おまけ
 
